@@ -244,10 +244,12 @@ SELECT
         ELSE 'Standard' -- This catches the ones without a specific methodology
     END AS Methodology
 
+-- Removing the noise/corrupted data
+
 FROM cpi_production c
 JOIN  Dimension_Areas a ON c.Area_code = a.AreaID
 JOIN  Dimension_Items i ON c.Item_code = i.ItemID
-WHERE c.CPI_Value < 1000; -- Removes the noise/corrupted data
+WHERE c.CPI_Value < 1000; 
 
 
 
