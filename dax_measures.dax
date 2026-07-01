@@ -1,0 +1,47 @@
+/*
+===============================================================================
+GLOBAL CPI DATA PIPELINE — POWER BI DAX MEASURES REPOSITORY
+Author: Michael Arikenbi
+Description: Advanced macroeconomic and statistical volatility tracking formulas.
+===============================================================================
+*/
+
+-- 1. BASE CONSUMER PRICE INDEX ACCUMULATION
+Average CPI Value = 
+AVERAGE(CPI_TABLE[CPI_Value])
+
+
+-- 2. TIME-SERIES INTEL (YEAR-OVER-YEAR INFLATION RATE)
+Current YOY Inflation = 
+VAR LatestYear = MAX('CPI_TABLE'[Year_num])
+VAR CurrentCPI = CALCULATE([Average CPI Value], 'CPI_TABLE'[Year_num] = LatestYear)
+VAR PriorCPI = CALCULATE([Average CPI Value], 'CPI_Table'[Year_num] = LatestYear - 1)
+RETURN
+    DIVIDE(CurrentCPI - PriorCPI, PriorCPI, BLANK())
+
+
+-- 3. TIME-SERIES INTEL (LAGGED PRIOR YEAR VALUE)
+Prior_Year_CPI = 
+CALCULATE(
+    [Average CPI Value],
+    FILTER(
+        ALL('CPI_TABLE'[Year_num]),
+        'CPI_TABLE'[Year_num] = MAX('CPI_TABLE'[Year_num]) - 1
+    )
+)
+
+
+-- 4. HISTORICAL MACROECONOMIC SHOCK TRACKING
+Historical Peak Shock = 
+MAXX(
+    ALL('CPI_TABLE'[Year_num]),
+    [Current YOY Inflation]
+)
+
+
+-- 5. RISK ANALYSIS (SECTOR VOLATILITY INDEX)
+Sector Volatility Index = 
+STDEVX.P(
+    VALUES('CPI_TABLE'[Year_num]),
+    [Current YOY Inflation]
+)
