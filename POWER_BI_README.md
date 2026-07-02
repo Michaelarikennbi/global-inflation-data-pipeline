@@ -13,3 +13,25 @@ Building enterprise-grade financial dashboards requires moving past simple aggre
 ### 3. Iterative Economic Risk & Dispersion Tracking (`Historical Peak Shock` & `Sector Volatility Index`)
 * **Technical Method:** Deployed advanced X-system iterators (`MAXX` and `STDEVX.P`) running over multi-row historical dimensional arrays.
 * **Business Rationale:** A simple average completely flattens out economic reality—it fails to tell stakeholders how unstable an asset class is. Implementing `STDEVX.P` measures the exact statistical variance (Standard Deviation) of price swings across years, providing an institutional-grade **Volatility Index** to isolate which economic sectors are highly unstable. Meanwhile, `MAXX` scans the entire chronological timeline to flag the single worst historical price shock, ensuring risk teams know the historical ceiling of market stress.
+
+## VISUALIZATIONS 
+
+###  Question 1: How does global food inflation behave compared to general consumer goods?
+* **The Insight:** Food inflation is a highly volatile economic driver compared to the steady baseline of general consumer goods. 
+* **The Data Story:** In 2022, global food inflation exploded to a historic high of **18.22%**, while general consumer goods stood at **10.51%**. This dramatic divergence represents severe supply chain gridlocks.
+
+![Food vs General Inflation Divergence](food_vs_general_shock.png)
+
+---
+
+###  Question 2: Which tracking methodology exposes our financial models to the highest risk?
+* **The Insight:** Index aggregation choices radically alter risk perception. The **Weighted Average** methodology introduces the highest rate of volatility (~8.35%).
+
+![Volatility Index by Methodology](methodology_volatility.png)
+
+---
+
+###  Question 3: What is the single worst historical macroeconomic shock, and what does it tell us?
+* **The Insight:** Driven by our `Historical Peak Shock` DAX measure, the system flags **14.43%** as the absolute maximum boundary of cross-sector inflation acceleration.
+
+![KPI Executive Summary Cards](peak_shock_kpi.png)
