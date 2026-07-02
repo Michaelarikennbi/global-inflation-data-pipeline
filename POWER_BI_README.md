@@ -15,6 +15,15 @@ Building enterprise-grade financial dashboards requires moving past simple aggre
 * **Business Rationale:** A simple average completely flattens out economic reality—it fails to tell stakeholders how unstable an asset class is. Implementing `STDEVX.P` measures the exact statistical variance (Standard Deviation) of price swings across years, providing an institutional-grade **Volatility Index** to isolate which economic sectors are highly unstable. Meanwhile, `MAXX` scans the entire chronological timeline to flag the single worst historical price shock, ensuring risk teams know the historical ceiling of market stress.
 
 ## VISUALIZATIONS 
+This dashboard serves as an executive flight deck monitoring global inflation trajectory and risk exposure.
+Below is the historical trend tracking this 25-year economic timeline:
+
+![Macroeconomic Inflation Trajectory](PowerBi_dashboard1_cpi.PNG)
+
+
+ 
+## Below are the definitive data stories answering critical stakeholder questions:
+
 
 ###  Question 1: How does global food inflation behave compared to general consumer goods?
 * **The Insight:** Food inflation is a highly volatile economic driver compared to the steady baseline of general consumer goods. 
